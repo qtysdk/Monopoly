@@ -1,3 +1,13 @@
+## 小富翁
+
+遊戲想像圖
+
+![](./docs/game-draft.jpg)
+
+遊戲概念分析
+
+![](./docs/game-concepts.jpg)
+
 ## 語彚表
 
 | 中文術語 | 英文術語     | 概念                                          |
