@@ -12,10 +12,13 @@ public class Player {
         return String.format("%s [%d]", name, position);
     }
 
-    public void move(int steps) {
-        System.out.println(name + " move " + steps + " steps.");
+    public void move(int mapLength, int steps) {
+
         // where am I?
         // how to move myself
         position += steps;
+        position = position % mapLength;
+
+        System.out.println(name + " move " + steps + " steps.");
     }
 }

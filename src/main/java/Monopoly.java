@@ -27,9 +27,9 @@ public class Monopoly {
         new Scanner(System.in).nextLine();
 
         int steps = rollDice();
-        player.move(steps);
-
+        player.move(gameMap.length(), steps);
         System.out.println(player);
+        System.out.println();
 
     }
 
