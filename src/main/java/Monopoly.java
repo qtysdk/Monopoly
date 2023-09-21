@@ -26,6 +26,16 @@ public class Monopoly {
         System.out.println("這是 " + player + " 的回合，請按 enter 擲骰子");
         new Scanner(System.in).nextLine();
 
+        int steps = rollDice();
+        player.move(steps);
+
+        System.out.println(player);
+
+    }
+
+    private int rollDice() {
+        // dice between 1 and 3
+        return 1 + (int) ((Math.random() * 100) % 3);
     }
 
     private Player currentPlayer() {

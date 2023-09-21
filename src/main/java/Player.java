@@ -1,4 +1,6 @@
 public class Player {
+
+    private int position = 0;
     private final String name;
 
     public Player(String name) {
@@ -7,6 +9,13 @@ public class Player {
 
     @Override
     public String toString() {
-        return "玩家名稱：" + name;
+        return String.format("%s [%d]", name, position);
+    }
+
+    public void move(int steps) {
+        System.out.println(name + " move " + steps + " steps.");
+        // where am I?
+        // how to move myself
+        position += steps;
     }
 }
