@@ -12,13 +12,23 @@ public class Player {
         return String.format("%s [%d]", name, position);
     }
 
-    public void move(int mapLength, int steps) {
+    public void move(GameMap gameMap, int steps) {
 
         // where am I?
         // how to move myself
         position += steps;
-        position = position % mapLength;
+        position = position % gameMap.length();
+        gameMap.doSomething(this);
+
 
         System.out.println(name + " move " + steps + " steps.");
+    }
+
+    public String name() {
+        return this.name;
+    }
+
+    public int position() {
+        return this.position;
     }
 }

@@ -20,6 +20,9 @@ public class Monopoly {
     }
 
     public void waitForPlayerAction() {
+        gameMap.show();
+
+
         // player take the turn and do something -> roll dice
         Player player = currentPlayer();
 
@@ -27,7 +30,7 @@ public class Monopoly {
         new Scanner(System.in).nextLine();
 
         int steps = rollDice();
-        player.move(gameMap.length(), steps);
+        player.move(gameMap, steps);
         System.out.println(player);
         System.out.println();
 
