@@ -1,16 +1,20 @@
+package model;
+
+import model.blocks.Block;
+import model.blocks.Land;
+import model.blocks.StartPoint;
+
 public class GameMap {
 
-    private String[] blocks = new String[]{"起點", "空地", "空地", "空地", "空地"};
+    private Block[] blocks = new Block[]{new StartPoint(), new Land(), new Land(), new Land(), new Land()};
 
     public int length() {
         return blocks.length;
     }
 
     public void doSomething(Player player) {
-        String blockType = getBlockType(player);
-        if ("空地".equals(blockType)) {
-            blocks[player.position()] = String.format("%s的地", player.name());
-        }
+        Block block = getBlockType(player);
+        block.doSomething(player);
 
 
         System.out.printf("%s located %d is %s%n",
@@ -20,13 +24,13 @@ public class GameMap {
         );
     }
 
-    private String getBlockType(Player player) {
+    private Block getBlockType(Player player) {
         return this.blocks[player.position()];
     }
 
     public void show() {
         System.out.println("地圖：");
-        for (String block : this.blocks) {
+        for (Block block : this.blocks) {
             System.out.printf("%s ", block);
         }
         System.out.println();

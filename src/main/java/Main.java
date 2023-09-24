@@ -1,3 +1,7 @@
+import model.GameMap;
+import model.Monopoly;
+import model.Player;
+
 public class Main {
     public static void main(String[] args) {
         Monopoly monopoly = new Monopoly(new Player[]{
