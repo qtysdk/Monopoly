@@ -11,9 +11,7 @@ public class Land extends Block {
         if (owner == null) {
             this.owner = player;
             System.out.printf("%s 買下了空地\n", player);
-        }
-
-        if (owner != player) {
+        } else if (owner != player) {
             System.out.printf("%s 應該付過路費\n", player);
         }
     }
