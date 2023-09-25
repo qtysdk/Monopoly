@@ -15,13 +15,6 @@ public class GameMap {
     public void doSomething(Player player) {
         Block block = getBlockType(player);
         block.doSomething(player);
-
-
-        System.out.printf("%s located %d is %s%n",
-                player.name(),
-                player.position(),
-                getBlockType(player)
-        );
     }
 
     private Block getBlockType(Player player) {

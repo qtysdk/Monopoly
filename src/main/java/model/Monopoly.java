@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Monopoly {
@@ -18,7 +19,7 @@ public class Monopoly {
     }
 
     public boolean isEnded() {
-        return false;
+        return Arrays.stream(players).filter(Player::isBankrupt).count() == 1;
     }
 
     public void waitForPlayerAction() {

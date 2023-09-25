@@ -1,7 +1,9 @@
 package model;
 
-public class Player {
+import model.blocks.Land;
 
+public class Player {
+    private int cash = 100;
     private int position = 0;
     private final String name;
 
@@ -11,19 +13,13 @@ public class Player {
 
     @Override
     public String toString() {
-        return String.format("%s [%d]", name, position);
+        return String.format("%s [%d] {cash: %d}", name, position, cash);
     }
 
     public void move(GameMap gameMap, int steps) {
-
-        // where am I?
-        // how to move myself
         position += steps;
         position = position % gameMap.length();
         gameMap.doSomething(this);
-
-
-        System.out.println(name + " move " + steps + " steps.");
     }
 
     public String name() {
@@ -32,5 +28,23 @@ public class Player {
 
     public int position() {
         return this.position;
+    }
+
+    public boolean buy(Land land) {
+        if (land.price > this.cash) {
+            return false;
+        } else {
+            this.cash -= land.price;
+            return true;
+        }
+    }
+
+    public void payTo(Player owner, int price) {
+        this.cash -= price;
+        owner.cash += price;
+    }
+
+    public boolean isBankrupt() {
+        return cash < 0;
     }
 }
