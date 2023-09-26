@@ -29,10 +29,14 @@ public class GameMap {
         return this.blocks[player.position()];
     }
 
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
     public void show(Player[] players) {
 
-        System.out.println();
-        System.out.println();
+        clearScreen();
         System.out.println("小富翁");
         System.out.println("------------------------------------------");
 
