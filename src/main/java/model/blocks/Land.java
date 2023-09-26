@@ -1,6 +1,11 @@
 package model.blocks;
 
+import model.Event;
 import model.Player;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Land extends Block {
 
@@ -9,16 +14,15 @@ public class Land extends Block {
 
 
     @Override
-    public void doSomething(Player player) {
+    public List<Event> doSomething(Player player) {
         if (owner == null && player.buy(this)) {
             this.owner = player;
-            System.out.printf("%s 買下了空地\n", player);
+            return Event.fromString(String.format("%s 買下了空地", player.name()));
         } else if (owner != null && owner != player) {
-            // TODO 付過路費的英文術語是什麼？
             player.payTo(owner, price);
-            System.out.printf("%s 應該付過路費\n", player);
-
+            return Event.fromString(String.format("%s 付過了路費 %d 元給 %s", player.name(), price, owner.name()));
         }
+        return Collections.emptyList();
     }
 
     @Override

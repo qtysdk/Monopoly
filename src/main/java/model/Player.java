@@ -2,6 +2,8 @@ package model;
 
 import model.blocks.Land;
 
+import java.util.List;
+
 public class Player {
     private int cash = 1000;
     private int position = 0;
@@ -16,10 +18,10 @@ public class Player {
         return String.format("%s [%d] {cash: %d}", name, position, cash);
     }
 
-    public void move(GameMap gameMap, int steps) {
+    public List<Event> move(GameMap gameMap, int steps) {
         position += steps;
         position = position % gameMap.length();
-        gameMap.doSomething(this);
+        return gameMap.doSomething(this);
     }
 
     public String name() {

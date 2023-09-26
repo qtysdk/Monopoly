@@ -1,11 +1,16 @@
 package model.blocks;
 
+import model.Event;
 import model.Player;
+
+import java.util.Collections;
+import java.util.List;
 
 public class StartPoint extends Block {
     @Override
-    public void doSomething(Player player) {
+    public List<Event> doSomething(Player player) {
         // do nothing for now
+        return Collections.emptyList();
     }
 
     @Override

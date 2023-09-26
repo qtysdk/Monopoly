@@ -5,7 +5,9 @@ import model.blocks.Land;
 import model.blocks.StartPoint;
 
 import java.util.Arrays;
-import java.util.StringJoiner;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 public class GameMap {
@@ -16,9 +18,11 @@ public class GameMap {
         return blocks.length;
     }
 
-    public void doSomething(Player player) {
+    private Queue<Event> queue = new LinkedList<>();
+
+    public List<Event> doSomething(Player player) {
         Block block = getBlockType(player);
-        block.doSomething(player);
+        return block.doSomething(player);
     }
 
     private Block getBlockType(Player player) {
@@ -26,6 +30,9 @@ public class GameMap {
     }
 
     public void show(Player[] players) {
+
+        System.out.println();
+        System.out.println();
         System.out.println("小富翁");
         System.out.println("------------------------------------------");
 

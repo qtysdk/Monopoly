@@ -1,7 +1,6 @@
 package model;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Monopoly {
 
@@ -9,6 +8,8 @@ public class Monopoly {
 
     private Player[] players;
     private GameMap gameMap;
+
+    private Queue<Event> history = new LinkedList<>();
 
     public Monopoly(Player[] players, GameMap gameMap) {
         // TODO make sure have 2 or more players
@@ -30,11 +31,12 @@ public class Monopoly {
         new Scanner(System.in).nextLine();
 
         int steps = rollDice();
-        player.move(gameMap, steps);
-        System.out.println(player);
+        history.addAll(player.move(gameMap, steps));
+
         System.out.println();
 
     }
+
 
     private int rollDice() {
         // dice between 1 and 3
@@ -47,5 +49,17 @@ public class Monopoly {
 
     public void display() {
         gameMap.show(players);
+
+        int limit = 5;
+        while (history.size() > limit) {
+            history.poll();
+        }
+        if (!history.isEmpty()) {
+            System.out.printf("最近發生的 %d 件事：\n", limit);
+            history.forEach(System.out::println);
+            System.out.println();
+        }
+
+        System.out.println();
     }
 }
