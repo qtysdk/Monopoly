@@ -3,7 +3,7 @@ package model;
 import model.blocks.Land;
 
 public class Player {
-    private int cash = 100;
+    private int cash = 1000;
     private int position = 0;
     private final String name;
 

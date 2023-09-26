@@ -23,9 +23,6 @@ public class Monopoly {
     }
 
     public void waitForPlayerAction() {
-        gameMap.show();
-
-
         // player take the turn and do something -> roll dice
         Player player = currentPlayer();
 
@@ -46,5 +43,9 @@ public class Monopoly {
 
     private Player currentPlayer() {
         return players[turns++ % players.length];
+    }
+
+    public void display() {
+        gameMap.show(players);
     }
 }

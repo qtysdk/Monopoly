@@ -9,6 +9,7 @@ public class Main {
         }, new GameMap());
 
         while (!monopoly.isEnded()) {
+            monopoly.display();
             // TODO 判斷剩下唯一一人沒有破產才結束
             monopoly.waitForPlayerAction();
         }
